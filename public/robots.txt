@@ -1,0 +1,33 @@
+# 대한요가회 robots.txt
+# www.kyoga.or.kr
+
+# 모든 크롤러 접근 허용
+User-agent: *
+Allow: /
+
+# 비공개 또는 중복된 컨텐츠 접근 제한
+Disallow: /_next/
+Disallow: /_error/
+Disallow: /_app/
+Disallow: /api/
+Disallow: /(auth)/
+Disallow: /dialog/
+Disallow: /error/
+
+# CSS, JS, 이미지 등 리소스 파일 허용
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+Allow: /*.woff$
+Allow: /*.woff2$
+
+# API 크롤링 빈도 제한 (초당 요청수)
+Crawl-delay: 1
+
+# 사이트맵 위치
+Sitemap: https://kyoga.or.kr/sitemap.xml 
