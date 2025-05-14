@@ -81,47 +81,58 @@
 @layer components {
   /* 타이포그래피 공통 클래스 */
   .display-1 {
-    @apply text-4xlg leading-15;
+    font-size: var(--text-4xl);
+    line-height: var(--leading-16);
   }
 
   .heading-1 {
-    @apply text-3xlg leading-15;
+    font-size: var(--text-3xl);
+    line-height: var(--leading-15);
   }
 
   .heading-2 {
-    @apply text-2xlg leading-12;
+    font-size: var(--text-2xl);
+    line-height: var(--leading-12);
   }
 
   .heading-3 {
-    @apply text-xlg leading-10;
+    font-size: var(--text-xl);
+    line-height: var(--leading-10);
   }
 
   .heading-4 {
-    @apply text-lg leading-9.5;
+    font-size: var(--text-lg);
+    line-height: var(--leading-9.5);
   }
 
   .body-1 {
-    @apply text-ml leading-9;
+    font-size: var(--text-ml);
+    line-height: var(--leading-9);
   }
 
   .body-2 {
-    @apply text-md leading-8;
+    font-size: var(--text-md);
+    line-height: var(--leading-8);
   }
 
   .body-3 {
-    @apply text-sm leading-7;
+    font-size: var(--text-sm);
+    line-height: var(--leading-7);
   }
 
   .body-4 {
-    @apply text-xs leading-6;
+    font-size: var(--text-xs);
+    line-height: var(--leading-6);
   }
 
   .body-5 {
-    @apply text-2xs leading-5.5;
+    font-size: var(--text-2xs);
+    line-height: var(--leading-5.5);
   }
 
   .caption-1 {
-    @apply text-3xs leading-5;
+    font-size: var(--text-3xs);
+    line-height: var(--leading-5);
   }
 
   .btn-primary {

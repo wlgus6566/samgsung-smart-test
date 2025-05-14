@@ -15,9 +15,9 @@ export default function HomeContents({ initialData }) {
     description: "", // 초기값 설정!
   });
   return (
-    <div className="flex leading-4xlg flex-col gap-4 p-4 bg-gradient-brand shadow-lg">
-      <div className="font-poppins">123123</div>
-      <div className="font-samsung">font-samsung</div>
+    <div className="flex display-1 flex-col gap-4 p-4 bg-gradient-brand shadow-lg">
+      <div className="font-poppins text-4xl">123123</div>
+      <div className="font-samsung ">font-samsung</div>
       <FormTextarea
         label="설명"
         placeholder="내용을 입력해 주세요"
