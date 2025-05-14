@@ -80,30 +80,50 @@
 }
 @layer components {
   /* 타이포그래피 공통 클래스 */
+  .display-1 {
+    @apply text-4xlg leading-15;
+  }
+
   .heading-1 {
-    @apply text-[60px] font-bold leading-[75px] tracking-[-0.6px];
+    @apply text-3xlg leading-15;
   }
 
   .heading-2 {
-    @apply text-[32px] font-bold leading-[40px] tracking-[-0.32px];
+    @apply text-2xlg leading-12;
   }
 
   .heading-3 {
-    @apply text-[26px] font-bold leading-[36px] tracking-[-0.26px];
+    @apply text-xlg leading-10;
   }
 
   .heading-4 {
-    @apply text-[20px] font-bold leading-[30px] tracking-[-0.2px];
+    @apply text-lg leading-9.5;
   }
+
   .body-1 {
-    @apply text-[16px] font-normal leading-[24px] tracking-[-0.16px];
+    @apply text-ml leading-9;
   }
+
   .body-2 {
-    @apply text-[14px] font-normal leading-[20px] tracking-[-0.14px];
+    @apply text-md leading-8;
   }
+
   .body-3 {
-    @apply text-[12px] font-normal leading-[16px] tracking-[-0.12px];
+    @apply text-sm leading-7;
   }
+
+  .body-4 {
+    @apply text-xs leading-6;
+  }
+
+  .body-5 {
+    @apply text-2xs leading-5.5;
+  }
+
+  .caption-1 {
+    @apply text-3xs leading-5;
+  }
+
   .btn-primary {
     @apply px-[20px] py-[12px] text-white transition bg-primary rounded-[--radius];
   }
