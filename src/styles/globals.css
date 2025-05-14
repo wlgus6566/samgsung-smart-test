@@ -42,13 +42,11 @@
   --radius-xl: calc(var(--radius) + 4px);
   --shadow-lg: 14px 26px 61.6px 0px rgba(0, 0, 0, 0.1);
   --shadow-lg-right: 47px 26px 61.6px 0px rgba(0, 0, 0, 0.05);
-}
-
-@media (prefers-color-scheme: dark) {
-  /* :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;  
-  } */
+  /* Color Variables */
+  --color-primary-blue: var(--color-blue-500);
+  --color-primary-green: var(--color-green-500);
+  --color-primary-red: var(--color-red-500);
+  --gradient-brand: var(--gradient-brand);
 }
 
 @layer base {
@@ -217,12 +215,16 @@
   .full-cover {
     @apply absolute inset-0 w-full h-full object-cover;
   }
+
+  .bg-gradient-brand {
+    background-image: var(--gradient-brand);
+  }
 }
-.font-sans {
-  font-family: var(--font-sans);
+.font-samsung {
+  font-family: var(--font-samsung);
 }
-.font-mont {
-  font-family: var(--font-mont);
+.font-poppins {
+  font-family: var(--font-poppins);
 }
 .bullet-list li {
   position: relative;

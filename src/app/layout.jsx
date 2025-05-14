@@ -4,53 +4,65 @@ import "@/styles/globals.css";
 import AlertDialogBase from "@/components/dialog/alert";
 import localFont from "next/font/local";
 
-const SpoqaHanSansNeo = localFont({
+const SamsungOneKorean = localFont({
   src: [
     {
-      path: "../fonts/SpoqaHanSansNeo-Thin.woff",
-      weight: "100",
-      style: "normal",
-    },
-    {
-      path: "../fonts/SpoqaHanSansNeo-Light.woff",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../fonts/SpoqaHanSansNeo-Regular.woff",
+      path: "../fonts/SamsungOneKorean-400.woff",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../fonts/SpoqaHanSansNeo-Medium.woff",
+      path: "../fonts/SamsungOneKorean-500.woff",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../fonts/SpoqaHanSansNeo-Bold.woff",
+      path: "../fonts/SamsungOneKorean-600.woff",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/SamsungOneKorean-700.woff",
       weight: "700",
       style: "normal",
     },
   ],
-  variable: "--font-sans",
+  variable: "--font-samsung",
   display: "swap",
   fallback: ["system-ui", "sans-serif"],
 });
-const Montserrat = localFont({
-  src: "../fonts/Montserrat-Bold.ttf",
+
+const Poppins = localFont({
+  src: [
+    {
+      path: "../fonts/Poppins-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Poppins-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Poppins-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-poppins",
   display: "swap",
-  variable: "--font-mont",
   fallback: ["system-ui", "sans-serif"],
 });
 
 export const metadata = {
-  title: "대한요가회 - Korea Yoga Association",
-  description: "대한요가회 공식 웹사이트",
+  title: "삼성전자 스마트 공장",
+  description: "삼성전자 스마트 공장 공식 웹사이트",
   openGraph: {
-    title: "대한요가회 - Korea Yoga Association",
-    description: "전통과 현대를 잇는 요가 전문 기관, 대한요가회입니다.",
+    title: "삼성전자 스마트 공장",
+    description: "삼성전자 스마트 공장 공식 웹사이트",
     url: `${process.env.NEXT_PUBLIC_PC_DOMAIN}`,
-    siteName: "대한요가회",
+    siteName: "삼성전자 스마트 공장",
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_PC_DOMAIN}/images/meta.jpg`,
@@ -68,7 +80,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="ko"
-      className={`${SpoqaHanSansNeo.variable} ${Montserrat.variable}`}
+      className={` ${SamsungOneKorean.variable} ${Poppins.variable}`}
     >
       <body>
         <SWRProviders>
