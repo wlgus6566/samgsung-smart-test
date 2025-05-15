@@ -1,42 +1,81 @@
+"use client";
+
+import {
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
-export function FormTextarea({
+const FormTextarea = ({
+  control,
+  name,
   label,
-  placeholder = "",
-  value = "",
-  onChange,
-  disabled = false,
-  error,
-  maxLength = 100,
-}) {
+  description = "",
+  placeholder,
+  required = false,
+  labelSide,
+  className,
+  textareaClassName,
+  labelClassName,
+  descriptionClassName,
+  action,
+  maxLength,
+  ...props
+}) => {
   return (
-    <div className="space-y-1">
-      {label && (
-        <Label className="text-sm font-medium">
-          {label}
-          <span className="text-red-500 ml-1">*</span>
-        </Label>
-      )}
-      <div>
-        <Textarea
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          disabled={disabled}
-          maxLength={maxLength}
-          className={cn(
-            "resize-none w-full min-h-[100px] text-sm px-4 py-3",
-            disabled && "bg-muted cursor-not-allowed",
-            error ? "border-red-500 focus-visible:ring-red-500" : ""
+    <FormField
+      control={control}
+      name={name}
+      render={({ field, fieldState: { error } }) => (
+        <FormItem className={cn(className)}>
+          {label && (
+            <div className="flex items-center mb-1.5">
+              <FormLabel
+                className={cn(
+                  "text-sm font-medium text-gray-800",
+                  { "text-destructive": !!error },
+                  labelClassName,
+                  required &&
+                    "after:content-['*'] after:text-destructive after:ml-0.5"
+                )}
+              >
+                {label}
+              </FormLabel>
+              {labelSide && <div className="ml-auto">{labelSide}</div>}
+            </div>
           )}
-        />
-        <div className="text-right text-xs text-muted-foreground mt-1">
-          {value.length}/{maxLength}
-        </div>
-        {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
-      </div>
-    </div>
+          <div className="flex items-center">
+            <FormControl>
+              <Textarea
+                placeholder={placeholder}
+                className={cn(textareaClassName)}
+                maxLength={maxLength}
+                {...field}
+                {...props}
+              />
+            </FormControl>
+            {action && action}
+          </div>
+          {description && !error && (
+            <FormDescription
+              className={cn(
+                "text-xs text-gray-600 mt-1.5",
+                descriptionClassName
+              )}
+            >
+              {description}
+            </FormDescription>
+          )}
+          <FormMessage />
+        </FormItem>
+      )}
+    />
   );
-}
+};
+
+export default FormTextarea;
