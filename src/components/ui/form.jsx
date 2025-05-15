@@ -52,11 +52,7 @@ function FormItem({ className, ...props }) {
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div
-        data-slot="form-item"
-        className={cn("grid gap-2", className)}
-        {...props}
-      />
+      <div data-slot="form-item" className={cn("grid", className)} {...props} />
     </FormItemContext.Provider>
   );
 }
@@ -119,7 +115,7 @@ function FormMessage({ className, ...props }) {
     <p
       data-slot="form-message"
       id={formMessageId}
-      className={cn("text-destructive text-sm", className)}
+      className={cn("text-red-600 caption-1 mt-[6px]", className)}
       {...props}
     >
       {body}

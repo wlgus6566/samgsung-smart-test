@@ -1,55 +1,85 @@
 "use client";
 
-import { FormTextarea } from "@/components/form/form-textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import React, { useState } from "react";
-import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
-export default function HomeContents() {
-  const [form, setForm] = useState({
-    description: "", // 초기값 설정!
-  });
-  return (
-    <div className="flex display-1 flex-col gap-4 p-4 shadow-lg">
-      <div className="font-poppins text-4xl">123123</div>
-      <div className="font-samsung ">font-samsung</div>
-      <Input
-        label="label"
-        type="search"
-        placeholder="placeholder"
-        className=""
-      />
-      <Button variant="brand">버튼</Button>
-      <Button variant="primary" disabled>
-        버튼
-      </Button>
-      <Button variant="primary">버튼</Button>
-      <Button variant="secondary">버튼</Button>
-      <Button variant="outline">버튼</Button>
+import { Form } from "@/components/ui/form";
+import FormInput from "@/components/form/form-input";
 
-      <FormTextarea
-        label="설명"
-        placeholder="내용을 입력해 주세요"
-        value={form.description}
-        onChange={(e) => setForm({ ...form, description: e.target.value })}
-        error={form.description.length < 5 ? "5자 이상 입력해주세요." : ""}
-        maxLength={100}
-      />
-      <Select>
-        <SelectTrigger>
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value={1}>123</SelectItem>
-          <SelectItem value={2}>2</SelectItem>
-        </SelectContent>
-      </Select>
+// Zod 스키마 정의
+const createFormSchema = z.object({
+  title: z
+    .string()
+    .min(1, { message: "제목을 입력해 주세요." })
+    .max(100, { message: "제목은 100자 이내로 입력해주세요." }),
+  contents: z
+    .string()
+    .min(1, { message: "내용을 입력해 주세요." })
+    .max(5000, { message: "내용은 5000자 이내로 입력해주세요." }),
+  email: z
+    .string()
+    .email({ message: "올바른 이메일 주소를 입력해주세요." })
+    .optional()
+    .or(z.literal("")),
+});
+
+export default function HomeContentsForm() {
+  // 1. 폼 정의
+  const form = useForm({
+    resolver: zodResolver(createFormSchema),
+    defaultValues: {
+      title: "",
+      contents: "",
+      email: "",
+    },
+    mode: "onChange",
+  });
+
+  // 2. 제출 핸들러 정의
+  function onSubmit(values) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log("Form Submitted!", values);
+    // 예: alert(JSON.stringify(values, null, 2));
+    // 여기에 실제 API 호출 등의 로직을 추가할 수 있습니다.
+  }
+
+  return (
+    <div className="container mx-auto p-4 md:p-8">
+      <h1 className="text-2xl font-bold mb-6">콘텐츠 작성 예시</h1>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormInput
+            control={form.control}
+            name="title"
+            label="제목"
+            disabled={true}
+            placeholder="제목을 입력하세요"
+            required
+          />
+
+          <FormInput
+            control={form.control}
+            name="contents"
+            label="내용"
+            placeholder="내용을 입력하세요"
+            required
+          />
+
+          <FormInput
+            control={form.control}
+            name="email"
+            label="이메일"
+            placeholder="example@example.com"
+            type="email"
+          />
+
+          <Button type="submit" className="w-full md:w-auto">
+            제출하기
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 }

@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 
 export default function Header() {
@@ -37,6 +36,8 @@ export default function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [mounted]);
+
+  const [input, setInput] = useState("");
 
   const gnbMenu = [
     {
@@ -172,8 +173,6 @@ export default function Header() {
     },
   ];
 
-  const form = useForm();
-
   const handleMenuMouseEnter = (menuIndex) => {
     setCurrentMenuIndex(menuIndex);
   };
@@ -231,7 +230,20 @@ export default function Header() {
           </nav>
         </div>
         <div className="search-area">
-          <Input placeholder="검색어를 입력해 주세요" type="search" />
+          <Input
+            type="search"
+            className="w-80"
+            inputClassName="rounded-full"
+            value={input}
+            placeholder="키워드로 검색해보세요."
+            onChange={(e) => setInput(e.target.value)}
+            onSearch={() => {}}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                console.log("Enter");
+              }
+            }}
+          />
         </div>
       </div>
 
