@@ -68,7 +68,7 @@ export const metadata = {
         url: `${process.env.NEXT_PUBLIC_PC_DOMAIN}/images/meta.jpg`,
         width: 1200,
         height: 630,
-        alt: "대한요가회 대표 이미지",
+        alt: "삼성전자 대표 이미지",
       },
     ],
     locale: "ko_KR",

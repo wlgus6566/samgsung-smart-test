@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./variables.css";
-@custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 @theme inline {
   --color-background: var(--background);
@@ -54,13 +53,17 @@
     @apply border-border outline-primary;
   }
   body {
-    @apply text-[16px] font-sans leading-[20px] tracking-[-0.16px] text-black antialiased;
+    font-size: var(--text-sm);
+    line-height: 1.55;
+    font-family: var(--font-samsung);
+    color: var(--color-gray-900);
+    @apply antialiased;
   }
   caption {
     @apply sr-only;
   }
   button {
-    @apply m-0 p-0 border-none bg-transparent cursor-pointer whitespace-nowrap;
+    @apply m-0 p-0  bg-transparent cursor-pointer whitespace-nowrap;
   }
   table {
     thead {
@@ -80,7 +83,7 @@
 }
 @layer components {
   /* 타이포그래피 공통 클래스 */
-  .display-1 {
+  .heading-0 {
     font-size: var(--text-4xl);
     line-height: var(--leading-16);
   }
@@ -127,7 +130,7 @@
 
   .body-5 {
     font-size: var(--text-2xs);
-    line-height: var(--leading-5.5);
+    line-height: var(--leading-5\.5);
   }
 
   .caption-1 {
@@ -135,58 +138,6 @@
     line-height: var(--leading-5);
   }
 
-  .btn-primary {
-    @apply px-[20px] py-[12px] text-white transition bg-primary rounded-[--radius];
-  }
-  .btn-download {
-    @apply inline-flex items-center relative w-[152px] px-[20px] py-[9px] text-[16px] leading-[28px] bg-white rounded-[25px] border border-[#000];
-    border-style: solid;
-    border-width: 1px;
-    &:after {
-      content: "";
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      top: 11px;
-      right: 20px;
-      background-image: url("/images/icon/ic_download.svg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 24px;
-    }
-  }
-  .btn-more-link {
-    @apply inline-flex relative min-w-[152px] px-[20px] pr-[44px] py-[9px] text-[16px] leading-[28px] bg-transparent rounded-[25px] border border-[#000];
-    border-style: solid;
-    border-width: 1px;
-    &:after {
-      content: "";
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      background-image: url("/images/icon/ic_arrow_right_black.svg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 24px;
-    }
-  }
-
-  .btn-more-link.primary {
-    @apply border-primary text-white bg-primary;
-    &:after {
-      background-image: url("/images/icon/ic_arrow_right_white.svg");
-    }
-  }
-
-  .btn-more-link.white {
-    @apply border-white text-white;
-    &:after {
-      background-image: url("/images/icon/ic_arrow_right_white.svg");
-    }
-  }
   .card {
     @apply rounded-[25px] border border-[#EEE];
   }
@@ -208,7 +159,7 @@
 }
 @layer utilities {
   .container-fixed {
-    @apply w-[1140px] mx-auto;
+    @apply max-w-[1920px] mx-auto;
   }
   .flex-center {
     @apply flex justify-center items-center;

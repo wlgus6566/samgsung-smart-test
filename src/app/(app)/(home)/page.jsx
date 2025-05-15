@@ -5,12 +5,12 @@ import DetailLoading from "@/components/post/detail-loading";
 export const revalidate = 60;
 
 const Home = async () => {
-  const initialData = await fetcher("/api/v1/main");
-  console.log(initialData);
+  // const initialData = await fetcher("/api/v1/main");
+  // console.log(initialData);
 
   return (
     <Suspense fallback={<DetailLoading />}>
-      <HomeContents initialData={initialData} />
+      <HomeContents />
     </Suspense>
   );
 };
