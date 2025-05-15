@@ -33,8 +33,8 @@ function SelectTrigger({ className, children, disabled, ...props }) {
         <Image
           src={
             disabled
-              ? "/images/icon/ic_form_arrow_down_disabled.svg"
-              : "/images/icon/ic_form_arrow_down.svg"
+              ? "/images/icon/ic_disabled_down_angle.svg"
+              : "/images/icon/ic_default_down_angle.svg"
           }
           alt="arrow down"
           width={20}
@@ -98,16 +98,21 @@ function SelectItem({ className, children, disabled, ...props }) {
         "relative flex w-full cursor-default select-none items-center rounded-lg py-3 px-4 text-sm outline-none data-[disabled]:pointer-events-none",
         "focus:bg-gray-50 focus:text-gray-900",
         "data-[highlighted]:bg-gray-50 data-[highlighted]:text-gray-900",
-        "data-[state=checked]:bg-blue-50 data-[state=checked]:text-blue-600 data-[state=checked]:font-medium",
-        "data-[disabled]:text-gray-300 data-[disabled]:hover:bg-transparent data-[disabled]:hover:text-gray-300",
+        "data-[state=checked]:text-black data-[state=checked]:font-semibold",
+        "data-[disabled]:text-gray-500 data-[disabled]:hover:bg-transparent data-[disabled]:hover:text-gray-500",
         className
       )}
       disabled={disabled}
       {...props}
     >
-      <span className="absolute right-3 flex h-3.5 w-3.5 items-center justify-center">
+      <span className="absolute right-3 flex h-6 w-6 items-center justify-center">
         <SelectPrimitive.ItemIndicator>
-          <CheckIcon className="h-4 w-4 text-blue-600" />
+          <Image
+            src="/images/icon/ic_default_check.svg"
+            alt="check"
+            width={24}
+            height={24}
+          />
         </SelectPrimitive.ItemIndicator>
       </span>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -133,7 +138,12 @@ function SelectScrollUpButton({ className, ...props }) {
       )}
       {...props}
     >
-      <ChevronUpIcon className="h-4 w-4" />
+      <Image
+        src="/images/icon/ic_default_check.svg"
+        alt="check"
+        width={24}
+        height={24}
+      />
     </SelectPrimitive.ScrollUpButton>
   );
 }
@@ -147,7 +157,12 @@ function SelectScrollDownButton({ className, ...props }) {
       )}
       {...props}
     >
-      <ChevronDownIcon className="h-4 w-4" />
+      <Image
+        src="/images/icon/ic_default_check.svg"
+        alt="check"
+        width={24}
+        height={24}
+      />
     </SelectPrimitive.ScrollDownButton>
   );
 }
